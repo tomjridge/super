@@ -3,7 +3,9 @@ SHELL=bash
 URL=git@github.com:tomjridge
 URL=https://github.com/tomjridge
 
-all: p1 p3 e3 p4
+REPOS=p1 p3 e3 p4
+
+all: $(REPOS)
 
 p1: FORCE
 	if [ ! -d p1 ]; then git clone $(URL)/p1.git; fi
@@ -21,8 +23,11 @@ p4: FORCE
 	if [ ! -d p4 ]; then git clone $(URL)/p4.git; fi
 	cd p4 && git pull && cd src_ext && make e3_link && cd .. && make build
 
+pull:
+	for f in $(REPOS); do cd $$f && pwd && git pull && cd .. && echo; done
+
 status:
-	for f in p1 p3 e3 p4; do cd $$f && pwd && git status && cd .. && echo; done
+	for f in $(REPOS); do cd $$f && pwd && git status && cd .. && echo; done
 
 clean:
 	cd p1 && make clean
