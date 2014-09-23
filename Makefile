@@ -17,6 +17,9 @@ p4: FORCE
 	if [ ! -d p4 ]; then git clone $(URL)/p4.git; fi
 	cd p4 && git pull && cd src_ext && make e3_link && cd .. && make build
 
+status:
+	for f in p1 e3 p4; do cd $$f && pwd && git status && cd .. && echo; done
+
 clean:
 	cd p1 && make clean
 	cd e3 && make clean
