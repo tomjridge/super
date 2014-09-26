@@ -24,6 +24,7 @@ p4: FORCE
 	cd p4 && git pull && cd src_ext && make e3_link && cd .. && make build
 
 dockertest: FORCE
+	if [ ! -d dockertest ]; then git clone $(URL)/dockertest.git; fi
 	cd dockertest && git pull
 
 pull:
