@@ -4,7 +4,7 @@ URL=git@github.com:tomjridge
 URL=https://github.com/tomjridge
 
 REPOS=p1 p3 e3 p4 
-EXTRA=p4.wiki dockertest fs_spec lemix-tests netsem nixpkgs pandoc-templates ssl
+EXTRA=p4.wiki dockertest fs_spec lemix-tests netsem nixpkgs pandoc-templates ssl 
 
 all: $(REPOS) build
 
