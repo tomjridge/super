@@ -3,28 +3,66 @@ SHELL=bash
 URL=git@github.com:tomjridge
 URL=https://github.com/tomjridge
 
-REPOS=p1 p3 e3 p4 dockertest p4wiki
+REPOS=p1 p3 e3 p4 
+EXTRA=p4.wiki dockertest fs_spec lemix-tests netsem nixpkgs pandoc-templates ssl
 
-all: $(REPOS)
+all: $(REPOS) build
 
-p1: FORCE
-	if [ ! -d p1 ]; then git clone $(URL)/p1.git; fi
+extra: $(EXTRA)
+
+build: FORCE
 	cd p1 && git pull && make
-
-p3: FORCE
-	if [ ! -d p3 ]; then git clone $(URL)/p3.git; fi
 	cd p3 && git pull && make
-
-e3: FORCE
-	if [ ! -d e3 ]; then git clone $(URL)/e3.git; fi
 	cd e3 && git pull && make
-
-p4: FORCE
-	if [ ! -d p4 ]; then git clone $(URL)/p4.git; fi
 	cd p4 && git pull && cd src_ext && make e3_link && cd .. && make build
 
-p4wiki: FORCE
-	if [ ! -d p4 ]; then git clone $(URL)/p4.wiki.git; fi
+p1: FORCE
+	if [ ! -d $@ ]; then git clone git@github.com:tomjridge/$@; fi
+	cd $@ && git pull
+
+p3: FORCE
+	if [ ! -d $@ ]; then git clone git@github.com:tomjridge/$@; fi
+	cd $@ && git pull
+
+e3: FORCE
+	if [ ! -d $@ ]; then git clone git@github.com:tomjridge/$@; fi
+	cd $@ && git pull
+
+p4: FORCE
+	if [ ! -d $@ ]; then git clone git@github.com:tomjridge/$@; fi
+	cd $@ && git pull
+
+p4.wiki: FORCE
+	if [ ! -d $@ ]; then git clone git@github.com:tomjridge/$@; fi
+	cd $@ && git pull
+
+
+####
+
+fs_spec: FORCE
+	if [ ! -d fs_spec ]; then git clone $(URL)/fs_spec.git; fi
+	cd fs_spec && git pull
+
+lemix-tests: FORCE
+	if [ ! -d lemix-tests ]; then git clone git@github.com:ocamllabs/lemix-tests.git; fi
+	cd lemix-tests && git pull
+
+netsem: FORCE
+	if [ ! -d netsem ]; then git clone  https://github.com/PeterSewell/netsem.git; fi
+	cd netsem && git pull
+
+nixpkgs: FORCE
+	if [ ! -d nixpkgs ]; then git clone git@github.com:tomjridge/nixpkgs.git; fi
+	cd nixpkgs && git pull
+
+pandoc-templates: FORCE
+	if [ ! -d $@ ]; then git clone git@github.com:tomjridge/$@; fi
+	cd $@ && git pull
+
+ssl: FORCE
+	if [ ! -d $@ ]; then git clone https://github.com/xrchz/ssl.git; fi
+	cd $@ && git pull
+
 
 dockertest: FORCE
 	if [ ! -d dockertest ]; then git clone $(URL)/dockertest.git; fi
