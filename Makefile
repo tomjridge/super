@@ -3,7 +3,7 @@ SHELL=bash
 URL=git@github.com:tomjridge
 URL=https://github.com/tomjridge
 
-REPOS=p1 p3 e3 p4 dockertest
+REPOS=p1 p3 e3 p4 dockertest p4wiki
 
 all: $(REPOS)
 
@@ -22,6 +22,9 @@ e3: FORCE
 p4: FORCE
 	if [ ! -d p4 ]; then git clone $(URL)/p4.git; fi
 	cd p4 && git pull && cd src_ext && make e3_link && cd .. && make build
+
+p4wiki: FORCE
+	if [ ! -d p4 ]; then git clone $(URL)/p4.wiki.git; fi
 
 dockertest: FORCE
 	if [ ! -d dockertest ]; then git clone $(URL)/dockertest.git; fi
