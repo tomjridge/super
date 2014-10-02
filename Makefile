@@ -4,7 +4,7 @@ URL=git@github.com:tomjridge
 URL=https://github.com/tomjridge
 
 REPOS=p1 p3 e3 p4 
-EXTRA=p4.wiki dockertest fs_spec lemix-tests netsem nixpkgs pandoc-templates ssl tomjridge.github.io
+EXTRA=p4.wiki dockertest fs_spec lemix-tests netsem nixpkgs pandoc-templates ssl tomjridge.github.io agda-cufp
 
 all: $(REPOS) build
 
@@ -60,6 +60,10 @@ pandoc-templates: FORCE
 	cd $@ && git pull
 
 tomjridge.github.io: FORCE
+	if [ ! -d $@ ]; then git clone $(URL)/$@; fi
+	cd $@ && git pull
+
+agda-cufp: FORCE
 	if [ ! -d $@ ]; then git clone $(URL)/$@; fi
 	cd $@ && git pull
 
