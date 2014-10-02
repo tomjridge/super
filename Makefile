@@ -17,23 +17,23 @@ build: FORCE
 	cd p4 && git pull && cd src_ext && make e3_link && cd .. && make build
 
 p1: FORCE
-	if [ ! -d $@ ]; then git clone git@github.com:tomjridge/$@; fi
+	if [ ! -d $@ ]; then git clone $(URL)/$@; fi
 	cd $@ && git pull
 
 p3: FORCE
-	if [ ! -d $@ ]; then git clone git@github.com:tomjridge/$@; fi
+	if [ ! -d $@ ]; then git clone $(URL)/$@; fi
 	cd $@ && git pull
 
 e3: FORCE
-	if [ ! -d $@ ]; then git clone git@github.com:tomjridge/$@; fi
+	if [ ! -d $@ ]; then git clone $(URL)/$@; fi
 	cd $@ && git pull
 
 p4: FORCE
-	if [ ! -d $@ ]; then git clone git@github.com:tomjridge/$@; fi
+	if [ ! -d $@ ]; then git clone $(URL)/$@; fi
 	cd $@ && git pull
 
 p4.wiki: FORCE
-	if [ ! -d $@ ]; then git clone git@github.com:tomjridge/$@; fi
+	if [ ! -d $@ ]; then git clone $(URL)/$@; fi
 	cd $@ && git pull
 
 
@@ -52,11 +52,11 @@ netsem: FORCE
 	cd netsem && git pull
 
 nixpkgs: FORCE
-	if [ ! -d nixpkgs ]; then git clone git@github.com:tomjridge/nixpkgs.git; fi
+	if [ ! -d nixpkgs ]; then git clone $(URL)/nixpkgs.git; fi
 	cd nixpkgs && git pull
 
 pandoc-templates: FORCE
-	if [ ! -d $@ ]; then git clone git@github.com:tomjridge/$@; fi
+	if [ ! -d $@ ]; then git clone $(URL)/$@; fi
 	cd $@ && git pull
 
 ssl: FORCE
