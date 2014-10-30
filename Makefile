@@ -63,6 +63,10 @@ pandoc-templates: FORCE
 	if [ ! -d $@ ]; then git clone $(URL)/$@; fi
 	cd $@ && git pull
 
+opam-repository: FORCE
+	if [ ! -d $@ ]; then git clone $(URL)/$@; fi
+	cd $@ && git pull
+
 tomjridge.github.io: FORCE
 	if [ ! -d $@ ]; then git clone $(URL)/$@; fi
 	cd $@ && git pull
