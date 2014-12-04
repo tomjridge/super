@@ -109,5 +109,6 @@ clean:
 	cd p3 && make clean
 	cd e3 && make clean
 	cd p4 && make clean
+	cd example_grammars && make clean
 
 FORCE:
