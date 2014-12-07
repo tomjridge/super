@@ -1,9 +1,9 @@
 SHELL=bash
 
 URL=git@github.com:tomjridge
-URL=https://github.com/tomjridge
+#URL=https://github.com/tomjridge
 
-REPOS=p1 p3 e3 p4 pq p4.wiki p1.wiki simple_ocaml_makefile example_grammars
+REPOS=p1 p3 e3 p4 pq p4.wiki p1.wiki simple_ocaml_makefile example_grammars orebuild
 EXTRA= dockertest fs_spec lemix-tests netsem nixpkgs pandoc-templates ssl tomjridge.github.io agda-cufp p1.wiki
 
 all: $(REPOS) build
@@ -49,6 +49,10 @@ simple_ocaml_makefile: FORCE
 	cd $@ && git pull
 
 example_grammars: FORCE
+	if [ ! -d $@ ]; then git clone $(URL)/$@; fi
+	cd $@ && git pull
+
+orebuild: FORCE
 	if [ ! -d $@ ]; then git clone $(URL)/$@; fi
 	cd $@ && git pull
 
