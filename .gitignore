@@ -15,3 +15,6 @@ pandoc-templates/
 pq/
 simple_ocaml_makefile/
 ssl/
+agda-cufp/
+orebuild/
+tomjridge.github.io/
