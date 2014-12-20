@@ -105,8 +105,8 @@ pull:
 	for f in $(REPOS) $(EXTRA); do cd $$f && pwd && git pull && cd .. && echo; done
 
 status:
-	git status
-	for f in $(REPOS) $(EXTRA); do cd $$f && pwd && git status && cd .. && echo; done
+	git status -sb
+	for f in $(REPOS) $(EXTRA); do cd $$f && pwd && git status -sb && cd .. && echo; done
 
 clean:
 	cd p1 && make clean
