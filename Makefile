@@ -102,7 +102,7 @@ dockertest: FORCE
 
 pull:
 	git pull
-	for f in $(REPOS) $(EXTRA); do cd $$f && pwd && git pull && cd .. && echo; done
+	for f in $(REPOS) $(EXTRA); do [ -d $$f ] && cd $$f && pwd && git pull && cd .. && echo; done
 
 status:
 	git status -sb
